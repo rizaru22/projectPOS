@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,4 @@ Route::get('/', function () {
 });
 
 Route::resource('kategori',CategoryController::class)->except('show','destroy','create');
+Route::resource('pelanggan',CustomerController::class)->except('destroy');
