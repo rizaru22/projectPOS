@@ -8,46 +8,19 @@
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 @endsection
 
-@section('judulh1','Admin - Category')
-@section('judulh3','Category')
+@section('judulh1','Admin - Product')
+
 @section('konten')
 
-<div class="col-md-4">
-
-    <div class="card card-success">
-        <div class="card-header">
-            <h3 class="card-title">Input Category</h3>
-        </div>
-        <!-- /.card-header -->
-        <!-- form start -->
-        <form action="{{ route('kategori.store') }}" method="POST">
-            @csrf
-            <div class=" card-body">
-                <div class="form-group">
-                    <label for="name">Nama Kategori</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder=" Nama Kategori">
-                </div>
-                <div class="form-group">
-                    <label for="description">Deskripsi</label>
-                    <textarea id="description" name="description" class=" form-control" rows="4"
-                        placeholder="Deskripsi"></textarea>
-                </div>
-            </div>
-            <!-- /.card-body -->
-
-            <div class="card-footer">
-                <button type="submit" class="btn btn-success float-right">Simpan</button>
-            </div>
-        </form>
-    </div>
 
 
-</div>
-
-<div class="col-md-8">
+<div class="col-md-12">
     <div class="card card-info">
         <div class="card-header">
-            <h3 class="card-title">Data Category</h3>
+            <h2 class="card-title">Data Customer</h2>
+            <a type="button" class="btn btn-success float-right" href="{{ route('produk.create') }}">
+                <i class=" fas fa-plus"></i> Tambah Product
+            </a>
         </div>
         <!-- /.card-header -->
 
@@ -56,8 +29,10 @@
                 <thead>
                     <tr>
                         <th>No</th>
+                        <th>Nama</th>
                         <th>Kategori</th>
-                        <th>Deskripsi</th>
+                        <th>Stok</th>
+                        <th>Harga</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -67,11 +42,29 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $dt->name }}</td>
-                        <td>{{ $dt->description }}</td>
+                        <td>{{ $dt->category->name }}</td>
+                        <td>{{ $dt->stock }}</td>
+                        <td>@money($dt->price) </td>
                         <td>
-                            <a type="button" class="btn btn-warning" href="{{ route('kategori.edit',$dt->id) }}">
-                                <i class=" fas fa-edit"></i>
-                            </a>
+                            <div class="btn-group">
+                                <form action="{{ route('produk.destroy',$dt->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class=" fas fa-trash"></i>
+                                    </button>
+
+                                </form>
+
+                                <a type="button" class="btn btn-warning" href="{{ route('produk.edit',$dt->id) }}">
+                                    <i class=" fas fa-edit"></i>
+                                </a>
+                                <a type="button" class="btn btn-success" href="{{ route('produk.show',$dt->id) }}">
+                                    <i class=" fas fa-eye"></i>
+                                </a>
+                            </div>
+
 
                         </td>
                     </tr>
@@ -121,6 +114,8 @@ $(function() {
 toastr.success("{{ $message}}");
 @elseif($message = Session::get('updated'))
 toastr.warning("{{ $message}}");
+@elseif($message = Session::get('deleted'))
+toastr.error("{{ $message}}");
 @endif
 </script>
 @endsection

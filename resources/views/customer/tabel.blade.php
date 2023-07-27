@@ -98,8 +98,7 @@ $(function() {
 
 @if($message = Session::get('success'))
 toastr.success("{{ $message}}");
-@endif
-@if($message = Session::get('updated'))
+@elseif($message = Session::get('updated'))
 toastr.warning("{{ $message}}");
 @endif
 </script>
