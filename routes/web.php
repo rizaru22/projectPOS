@@ -36,6 +36,11 @@ Route::get('login',[LoginController::class,'loginView'])->name('login');
 Route::post('login',[LoginController::class,'authenticate']);
 Route::post('logout',[LoginController::class,'logout'])->middleware('auth');
 
+Route::get('penjualan',function(){
+    return view('penjualan.index',[
+        "title"=>"Penjualan"
+    ]);
+})->middleware('auth');
 
 Route::get('lw',function(){
     return view('lw');

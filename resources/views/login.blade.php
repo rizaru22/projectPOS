@@ -37,8 +37,20 @@
 
                 <form action="/login" method="post">
                     @csrf
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" id="email" name="email" value="{{ old('email') }}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                        @error('email')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
 
-                    
                     @livewire('lw-formlogin')
 
 
