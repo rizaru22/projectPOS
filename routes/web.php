@@ -42,10 +42,6 @@ Route::get('penjualan',function(){
     ]);
 })->middleware('auth');
 
-Route::get('lw',function(){
-    return view('lw');
-});
-
 Route::get('order',function(){
 return view('penjualan.orders',[
     "title"=>"Order"
