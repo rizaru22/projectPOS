@@ -26,6 +26,7 @@ class UserController extends Controller
             "email"=>"email:dns",
             "password"=>"required"
         ]);
+        
         $password=Hash::make($request->password);
         $request->merge([
             "password"=>$password

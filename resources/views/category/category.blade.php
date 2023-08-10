@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.master')
 @section('tambahanCSS')
 <!-- DataTables -->
 <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">

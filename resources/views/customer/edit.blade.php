@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.master')
 @section('judulh1','Admin - Customer')
 
 @section('konten')

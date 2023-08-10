@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.master')
 @section('judulh1','Admin - Category')
 @section('judulh3','Edit Category')
 @section('konten')
