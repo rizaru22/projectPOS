@@ -45,3 +45,9 @@ Route::get('penjualan',function(){
 Route::get('lw',function(){
     return view('lw');
 });
+
+Route::get('order',function(){
+return view('penjualan.orders',[
+    "title"=>"Order"
+]);
+})->middleware('auth');

@@ -1,68 +1,51 @@
 <div class="row">
+<div class="d-flex aligns-items-center justify-content-center">
 
-<div class="col-lg-4">
 
-    <div class="card card-success">
+<div class="col-6">
+
+    <div class="card ">
         <div class="card-header">
-            <h3 class="card-title">Input Category</h3>
+            <h5 class="card-title">Invoice</h5>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form action="{{ route('kategori.store') }}" method="POST">
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+        <form wire:submit.prevent="store" method="POST">
+         
             @csrf
             <div class=" card-body">
                 <div class="form-group">
-                    <label for="name">Nama Kategori</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder=" Nama Kategori">
+                    <label for="name">Customer</label>
+                    <select class="form-control" wire:model="customer_id">
+                        <option hidden>--Pilih Customer--</option>
+                        @foreach($data as $dt )
+                        <option value="{{ $dt->id }}">{{ $dt->name }}</option>
+                        @endforeach
+                    </select>
+                    
                 </div>
-                <div class="form-group">
-                    <label for="description">Deskripsi</label>
-                    <textarea id="description" name="description" class=" form-control" rows="4" placeholder="Deskripsi"></textarea>
-                </div>
+            
             </div>
             <!-- /.card-body -->
 
-            <div class="card-footer">
-                <button type="submit" class="btn btn-success float-right">Simpan</button>
+            <div class="card-footer text-end">
+            <button type="submit" class="btn btn-success btn-sm">Submit</button>
             </div>
         </form>
     </div>
 
 
 </div>
-
-<div class="col-lg-8">
-    <div class="card card-info">
-        <div class="card-header">
-            <h3 class="card-title">Data Category</h3>
-        </div>
-        <!-- /.card-header -->
-
-        <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped ">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Kategori</th>
-                        <th>Deskripsi</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>No</td>
-                        <td>Kategori</td>
-                        <td>Deskripsi</td>
-                        <td>Aksi</td>
-                    </tr>
-
-                </tbody>
-            </table>
-
-        </div>
-
-
-    </div>
 </div>
 
 </div>
