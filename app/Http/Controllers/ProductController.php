@@ -79,4 +79,28 @@ class ProductController extends Controller
             "data"=>$product
         ]);
     }
+    public function code($id): View
+{
+    $product = Product::find($id);
+
+    if ($product) {
+        $code = str_pad($product->id, 5, '0', STR_PAD_LEFT); // Menghasilkan kode berdasarkan ID
+        $stock = $product->stock;
+        $codes = array_fill(0, $stock, $code); // Buat array berisi kode yang sama sebanyak jumlah stok
+
+        for ($i = 0; $i < $stock; $i++) {
+            // Lakukan tindakan yang sesuai dengan penggunaan barang
+            // Contoh: Logika untuk penggunaan barang
+        }
+
+        return view('product.code')->with([
+            "title" => "Tampil Data Produk",
+            "product" => $product,
+            "codes" => $codes, // Mengirim array kode ke tampilan
+        ]);
+    }
+
+    return "ID barang tidak ditemukan.";
+}
+
 }
