@@ -63,6 +63,9 @@
                                 <a type="button" class="btn btn-success" href="{{ route('produk.show',$dt->id) }}">
                                     <i class=" fas fa-eye"></i>
                                 </a>
+                                 <a type="button" class="btn btn-primary" target="_blank" href="{{ route('produk.code',$dt->id) }}">
+                                    <i class=" fas fa-barcode"></i>
+                                </a>
                             </div>
 
 
