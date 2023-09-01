@@ -30,6 +30,7 @@ Route::get('/',function(){
 Route::resource('kategori',CategoryController::class)->except('show','destroy','create')->middleware('auth');
 Route::resource('pelanggan',CustomerController::class)->except('destroy')->middleware('auth');
 Route::resource('produk',ProductController::class)->middleware('auth');
+Route::get('/produk/{id}/code/print', [ProductController::class, 'code'])->name('produk.code');
 Route::resource('pengguna',UserController::class)->except('destroy','create','show','update','edit')->middleware('auth');
 
 Route::get('login',[LoginController::class,'loginView'])->name('login');
