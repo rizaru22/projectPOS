@@ -53,7 +53,7 @@
                         <a href="#" class="dropdown-item">
                             <i class="fas fa-user mr-2"></i> {{ Auth::user()->name }}
                             <span class="float-right text-muted text-sm"></span>
-                        </a>
+                        </a> 
                         
                         <div class="dropdown-divider"></div>
                         <form action="logout" method="POST">

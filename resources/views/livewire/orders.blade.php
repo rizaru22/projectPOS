@@ -152,7 +152,7 @@
                         </tr>
                     </table>
                     
-                    <button class="btn btn-lg btn-success"><i class="fas fa-print"></i>  Cetak</button>
+                    <button class="btn btn-lg btn-success" wire:click="receipt({{ $data->id }})"><i class="fas fa-print"></i>  Cetak</button>
                  
                 </div>
             </div>

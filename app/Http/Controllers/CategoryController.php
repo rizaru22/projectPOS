@@ -14,7 +14,7 @@ class CategoryController extends Controller
     {
         return view('category.category', [
             "title" => "Kategori",
-            "data" => Category::all()
+            "data" => Category::all() 
         ]);
     }
 

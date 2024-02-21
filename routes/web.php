@@ -5,6 +5,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CetakController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
@@ -26,8 +27,8 @@ Route::get('/',function(){
         "title"=>"Dashboard"
     ]);
 })->middleware('auth');
-
-Route::resource('kategori',CategoryController::class)->except('show','destroy','create')->middleware('auth');
+ 
+Route::resource('kategori', CategoryController::class)->except('show','destroy','create')->middleware('auth');
 Route::resource('pelanggan',CustomerController::class)->except('destroy')->middleware('auth');
 Route::resource('produk',ProductController::class)->middleware('auth');
 Route::resource('pengguna',UserController::class)->except('destroy','create','show','update','edit')->middleware('auth');
@@ -47,3 +48,5 @@ return view('penjualan.orders',[
     "title"=>"Order"
 ]);
 })->middleware('auth');
+
+Route::get('cetakReceipt',[CetakController::class,'receipt'])->name('cetakReceipt')->middleware('auth');
